@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <% if current_user.ta?%>
+    <%= render partial: "home/ta_home" %>
+  <% else %>
+    <%= render partial: "home/student_home" %>
+  <% end %>
+<% else %>
+<% end %>

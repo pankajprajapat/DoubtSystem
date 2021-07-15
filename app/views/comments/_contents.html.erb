@@ -1,0 +1,12 @@
+<div class="comments-container-<%= @doubt.id%>">
+  <%= pluralize(comments.size, 'Comments') %>
+  <% comments.each do |comment| %>
+    <p style="background-color: white;"><%= comment.description %></p>
+  <% end %>
+  <% if current_user.student? %>
+    <%= form_for [@doubt, Comment.new], remote: true do |f| %>
+      <%= f.text_field :description %>
+      <%= f.submit "Comment" %>
+    <% end %>
+  <% end %>
+</div>

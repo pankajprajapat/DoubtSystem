@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h2>Solve Doubts</h2>
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <%= render partial: "doubts/content" %>
+    </div>
+    <div class="col-md-3 col-sm-12">
+      <div class="card" style="background-color: lightblue;">
+        <div class="card-body">
+          <h5 class="card-title">Answer</h5>
+          <%= form_for [@doubt, @answer] do |f| %>
+            <%= f.text_area :description, class: 'form-control' %>
+            <br>
+            <%= f.submit "Answer", class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+      <br>
+
+      <%= link_to "Escalate", doubt_answer_path(@doubt, @answer, answer: { state: 'escalated' }), class: 'btn btn-outline-primary', method: :put %>
+    </div>
+  </div>
+</div>

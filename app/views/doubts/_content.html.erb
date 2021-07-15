@@ -1,0 +1,15 @@
+<div class="card" style="background-color: lightblue;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @doubt.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @doubt.description %></h6>
+    <p class="card-text">Asked By: <%= @doubt.user.email %> on <%= @doubt.created_at.strftime("%h %d %Y, %H:%M") %></p>
+    <% if @doubt.solved_answer.present? %>
+      <hr>
+      <div class="btn btn-primary" style="float: right;">Resolved</div>
+      <h6 class="card-subtitle mb-2 text-muted"><%= @doubt.solved_answer.description %></h6>
+      <p class="card-text">Answered By: <%= @doubt.solved_answer.user.email %> on <%= @doubt.solved_answer.updated_at.strftime("%h %d %Y, %H:%M") %></p>
+    <% end %>
+    <hr>
+    <%= render partial: "comments/contents", locals: { comments: @doubt.comments } %>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <h2>Dashboard</h2>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card" style="background-color: lightblue; text-align: center;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @doubt_count %></h5>
+          <p>Doubt Asked</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card" style="background-color: lightblue; text-align: center;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @logged_ta_user.solved_answers.count %></h5>
+          <p>Doubt Rosolved</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card" style="background-color: lightblue; text-align: center;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @logged_ta_user.escalated_answers.count %></h5>
+          <p>Doubt Escalated</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card" style="background-color: lightblue; text-align: center;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @logged_ta_user.avg_resolution_time %></h5>
+          <p>Avg. Doubt Resolution Time</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h2>TAs Report</h2>
+<table class="table" style="background-color: lightblue; text-align: center;">
+  <tbody>
+    <% @non_logged_user.each do |user| %>
+      <th><%= user.email %></th>
+      <tr>
+        <td>Doubt Accepted: <%= user.answers.count %></td>
+        <td>Doubt Resolved: <%= user.solved_answers.count %></td>
+        <td>Doubt Escalated: <%= user.escalated_answers.count %></td>
+        <td>Doubt Avg. Doubt Activity Time: <%= user.avg_resolution_time %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

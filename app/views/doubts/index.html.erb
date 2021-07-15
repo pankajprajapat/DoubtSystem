@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <h2>Solve Doubt</h2>
+  <% @doubts.each do |doubt| %>
+    <div class="card" style="background-color: lightblue;">
+      <div class="card-body">
+        <%= doubt.title %>
+        <%= link_to "Accept", new_doubt_answer_path(doubt, Answer.new), class: "btn btn-success" %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>
